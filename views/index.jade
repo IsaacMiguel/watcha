@@ -1,0 +1,50 @@
+  extends layout
+block content
+#container
+  h1
+    a(href='https://webrtc.github.io/samples/', title='WebRTC samples homepage') WebRTC samples
+    span Generate and transfer data
+  section
+    p
+      | This page generates and sends the specified amount of data via WebRTC datachannels.
+    p
+      | To accomplish this in an interoperable way, the data is split into chunks which are then transferred via the datachannel. The datachannel is reliable and ordered by default which is well-suited to filetransfers.
+    p
+      | Send and receive progress is monitored using HTML5 
+      i progress
+      |  elements.
+  section
+    #button
+      button#sendTheData(type='button') Generate and send data
+    .input
+      input#megsToSend(type='number', min='1', name='megs', value='128')
+      label(for='megsToSend') MB
+      #errorMsg
+    .input
+      input#ordered(type='checkbox', checked='')
+      label(for='ordered') Ordered mode
+    .progress
+      .label Send progress: 
+      progress#sendProgress(max='0', value='0')
+    .progress
+      .label Receive progress: 
+      progress#receiveProgress(max='0', value='0')
+  section
+    p View the console to see logging.
+    p
+      | The 
+      code RTCPeerConnection
+      |  objects 
+      code localConnection
+      |  and 
+      code remoteConnection
+      |  are in global scope, so you can inspect them in the console as well.
+    p
+      | For more information about RTCDataChannel, see 
+      a(href='http://www.html5rocks.com/en/tutorials/webrtc/basics/#toc-rtcdatachannel', title='RTCDataChannel section of HTML5 Rocks article about WebRTC') Getting Started With WebRTC
+      | .
+  a#viewSource(href='https://github.com/webrtc/samples/tree/gh-pages/src/content/datachannel/datatransfer', title='View source for this page on GitHub') View source on GitHub
+script(src='js/adapter.js')
+script(src='js/common.js')
+script(src='js/js/main.js')
+script(src='js/ga.js')
